@@ -50,10 +50,10 @@
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nmedia"
         android:layout_marginBottom="@dimen/common_spacing"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_menu"
+        android:text="@string/nmedia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_more_vert_24" />
@@ -89,13 +89,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spacing"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/description_like"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content_barrier"
         app:layout_constraintTop_toTopOf="@id/content_barrier"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_favorite_border_24" />
+        app:srcCompat="@drawable/ic_heart_border_24" />
 
     <TextView
         android:id="@+id/like_count"
@@ -114,13 +114,13 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spacing"
         android:layout_marginStart="@dimen/common_spacing"
-        android:background="@android:color/transparent"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/description_share"
         app:layout_constraintStart_toEndOf="@id/like_count"
         app:layout_constraintTop_toBottomOf="@id/content_barrier"
         app:layout_constraintTop_toTopOf="@id/content_barrier"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_share_24"
-        android:contentDescription="@string/description_share" />
+        app:srcCompat="@drawable/ic_share_24" />
 
     <TextView
         android:id="@+id/share_count"
@@ -133,13 +133,12 @@
         app:layout_constraintTop_toTopOf="@+id/share"
         tools:text="10" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/views_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spacing"
         android:layout_marginStart="@dimen/common_spacing"
-        android:background="@android:color/transparent"
         android:contentDescription="@string/description_views"
         app:layout_constraintEnd_toStartOf="@+id/views_count"
         app:layout_constraintHorizontal_bias="1.0"
