@@ -23,21 +23,5 @@ class MainActivity : AppCompatActivity() {
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
-
-//        viewModel.data.observe(this) { post ->
-//            with(binding) {
-//
-//            }
-//        }
-//
-//        with(binding) {
-//            like.setOnClickListener {
-//                viewModel.like()
-//            }
-//
-//            share.setOnClickListener {
-//                viewModel.share()
-//            }
-//        }
     }
 }
