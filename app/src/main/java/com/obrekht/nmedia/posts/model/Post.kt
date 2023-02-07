@@ -1,4 +1,4 @@
-package com.obrekht.nmedia.model
+package com.obrekht.nmedia.posts.repository.model
 
 data class Post(
     val id: Long,
