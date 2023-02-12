@@ -6,4 +6,11 @@
     <string name="description_like">Кнопка \"Нравится\"</string>
     <string name="description_share">Кнопка \"Поделиться\"</string>
     <string name="description_views">Просмотры</string>
+    <string name="menu_edit">Редактировать</string>
+    <string name="menu_remove">Удалить</string>
+    <string name="post_text">Напишите пост…</string>
+    <string name="description_post_save">Сохранить</string>
+    <string name="editing">Редактирование</string>
+    <string name="description_post_cancel">Отменить</string>
+    <string name="error_empty_content">Содержимое не может быть пустым</string>
 </resources>

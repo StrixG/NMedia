@@ -2,6 +2,7 @@ package com.obrekht.nmedia.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,17 +12,13 @@ import com.obrekht.nmedia.databinding.ItemPostBinding
 import com.obrekht.nmedia.posts.repository.model.Post
 import com.obrekht.nmedia.utils.StringUtils
 
-typealias OnLikeListener = (post: Post) -> Unit
-typealias OnShareListener = (post: Post) -> Unit
-
 class PostsAdapter(
-    val onLikeListener: OnLikeListener? = null,
-    val onShareListener: OnShareListener? = null
+    var interactionListener: PostInteractionListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(
-    AsyncDifferConfig.Builder(PostDiffCallback()).build()
+    AsyncDifferConfig.Builder(DiffCallback()).build()
 ) {
 
-    class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
+    class DiffCallback : DiffUtil.ItemCallback<Post>() {
         override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem.id == newItem.id
         }
@@ -61,11 +58,32 @@ class PostsAdapter(
         binding.apply {
             like.setOnClickListener {
                 val post = getItem(holder.bindingAdapterPosition)
-                onLikeListener?.invoke(post)
+                interactionListener.onLike(post)
             }
             share.setOnClickListener {
                 val post = getItem(holder.bindingAdapterPosition)
-                onShareListener?.invoke(post)
+                interactionListener.onShare(post)
+            }
+
+            val popupMenu = PopupMenu(menu.context, menu).apply {
+                inflate(R.menu.options_post)
+                setOnMenuItemClickListener { item ->
+                    val post = getItem(holder.bindingAdapterPosition)
+                    when (item.itemId) {
+                        R.id.edit -> {
+                            interactionListener.onEdit(post)
+                            true
+                        }
+                        R.id.remove -> {
+                            interactionListener.onRemove(post)
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            }
+            menu.setOnClickListener {
+                popupMenu.show()
             }
         }
 
