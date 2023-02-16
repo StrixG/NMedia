@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = PostsAdapter(interactionListener).apply {
             setHasStableIds(true)
-            hasStableIds()
         }
         binding.postList.adapter = adapter
         viewModel.data.observe(this) { posts ->
