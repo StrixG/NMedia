@@ -29,7 +29,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = PostsAdapter(interactionListener)
+        val adapter = PostsAdapter(interactionListener).apply {
+            setHasStableIds(true)
+        }
         binding.postList.adapter = adapter
         viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)

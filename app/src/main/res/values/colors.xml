@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="like">#D32F2F</color>
+    <color name="like_highlight">#20D32F2F</color>
 </resources>

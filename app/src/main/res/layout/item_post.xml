@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/common_spacing">
+    android:paddingHorizontal="@dimen/common_spacing"
+    android:paddingTop="@dimen/common_spacing">
 
     <ImageView
         android:id="@+id/avatar"
@@ -19,6 +20,7 @@
 
     <TextView
         android:id="@+id/author"
+        style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
@@ -39,23 +41,25 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
         android:layout_marginBottom="@dimen/common_spacing"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toBottomOf="@id/author"
         tools:text="@sample/posts.json/data/published" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
+        style="@style/Widget.App.Button.Menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_spacing"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_menu"
-        android:text="@string/nmedia"
+        app:icon="@drawable/ic_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_more_vert_24" />
+        app:tooltipText="@string/nmedia" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -66,6 +70,7 @@
 
     <TextView
         android:id="@+id/content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spacing"
@@ -83,69 +88,44 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/like"
+        style="@style/Widget.App.PostButton.Like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/common_spacing"
-        android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/description_like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content_barrier"
         app:layout_constraintTop_toTopOf="@id/content_barrier"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_heart_border_24" />
-
-    <TextView
-        android:id="@+id/like_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/common_spacing"
-        android:layout_marginStart="@dimen/post_icon_spacing"
-        app:layout_constraintBottom_toBottomOf="@id/like"
-        app:layout_constraintStart_toEndOf="@id/like"
-        app:layout_constraintTop_toTopOf="@id/like"
         tools:text="10" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
+        style="@style/Widget.App.PostButton.Share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/common_spacing"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="@dimen/button_spacing"
         android:contentDescription="@string/description_share"
-        app:layout_constraintStart_toEndOf="@id/like_count"
+        app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/content_barrier"
         app:layout_constraintTop_toTopOf="@id/content_barrier"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_share_24" />
-
-    <TextView
-        android:id="@+id/share_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/common_spacing"
-        android:layout_marginStart="@dimen/post_icon_spacing"
-        app:layout_constraintBottom_toBottomOf="@id/share"
-        app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@+id/share"
         tools:text="10" />
 
     <ImageView
         android:id="@+id/views_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/common_spacing"
+        android:layout_width="@dimen/views_icon_size"
+        android:layout_height="@dimen/views_icon_size"
         android:layout_marginStart="@dimen/common_spacing"
         android:contentDescription="@string/description_views"
+        app:layout_constraintBottom_toBottomOf="@+id/share"
         app:layout_constraintEnd_toStartOf="@+id/views_count"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@id/share_count"
+        app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/content_barrier"
         app:layout_constraintTop_toTopOf="@id/content_barrier"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_views_24" />
 
     <TextView
@@ -154,6 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/common_spacing"
         android:layout_marginStart="@dimen/post_icon_spacing"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         app:layout_constraintBottom_toBottomOf="@id/views_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/views_icon"

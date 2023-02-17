@@ -39,13 +39,9 @@ class PostsAdapter(
                 published.text = post.published
                 content.text = post.content
 
-                if (post.likedByMe) {
-                    like.setImageResource(R.drawable.ic_heart_24)
-                } else {
-                    like.setImageResource(R.drawable.ic_heart_border_24)
-                }
-                likeCount.text = StringUtils.getCompactNumber(post.likes)
-                shareCount.text = StringUtils.getCompactNumber(post.shares)
+                like.isChecked = post.likedByMe
+                like.text = StringUtils.getCompactNumber(post.likes)
+                share.text = StringUtils.getCompactNumber(post.shares)
                 viewsCount.text = StringUtils.getCompactNumber(post.views)
             }
         }
@@ -89,6 +85,8 @@ class PostsAdapter(
 
         return holder
     }
+
+    override fun getItemId(position: Int): Long = getItem(position).id
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = getItem(position)
