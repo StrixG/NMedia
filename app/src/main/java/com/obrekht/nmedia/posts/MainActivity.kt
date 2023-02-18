@@ -1,12 +1,13 @@
 package com.obrekht.nmedia.posts
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.obrekht.nmedia.R
 import com.obrekht.nmedia.databinding.ActivityMainBinding
-import com.obrekht.nmedia.posts.repository.model.Post
+import com.obrekht.nmedia.posts.model.Post
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -42,6 +43,13 @@ class MainActivity : AppCompatActivity() {
 
         override fun onRemove(post: Post) {
             viewModel.removeById(post.id)
+        }
+
+        override fun onVideoClick(post: Post) {
+            if (post.video.isNotBlank()) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                startActivity(intent)
+            }
         }
     }
 

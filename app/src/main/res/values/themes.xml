@@ -15,6 +15,7 @@
     </style>
 
     <style name="Widget.App.PostButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="cornerRadius">24dp</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
     </style>
 

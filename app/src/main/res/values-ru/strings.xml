@@ -15,4 +15,6 @@
     <string name="error_empty_content">Содержимое не может быть пустым</string>
     <string name="chooser_share_post">Поделиться записью</string>
     <string name="add_post_description">Добавить запись</string>
+    <string name="video_thumbnail">Обложка видео</string>
+    <string name="play_button">Кнопка воспроизведения</string>
 </resources>
