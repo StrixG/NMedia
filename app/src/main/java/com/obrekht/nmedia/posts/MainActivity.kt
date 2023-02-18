@@ -13,10 +13,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: PostsViewModel by viewModels()
 
-    private val addEditPostLauncher = registerForActivityResult(AddEditPostResultContract()) { result ->
-        result ?: return@registerForActivityResult
-        viewModel.save(result)
-    }
+    private val addEditPostLauncher =
+        registerForActivityResult(AddEditPostResultContract()) { result ->
+            if (result == null) {
+                viewModel.cancelEdit()
+            } else {
+                viewModel.save(result)
+            }
+        }
 
     private val interactionListener = object : PostInteractionListener {
         override fun onEdit(post: Post) {
