@@ -13,4 +13,6 @@
     <string name="editing">Редактирование</string>
     <string name="description_post_cancel">Отменить</string>
     <string name="error_empty_content">Содержимое не может быть пустым</string>
+    <string name="chooser_share_post">Поделиться записью</string>
+    <string name="add_post_description">Добавить запись</string>
 </resources>

@@ -13,4 +13,6 @@
     <string name="editing">Editing</string>
     <string name="description_post_cancel">Cancel</string>
     <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="chooser_share_post">Share the post</string>
+    <string name="add_post_description">Add post</string>
 </resources>
