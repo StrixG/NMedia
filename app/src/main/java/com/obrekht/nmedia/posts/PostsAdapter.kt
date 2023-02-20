@@ -1,15 +1,17 @@
 package com.obrekht.nmedia.posts
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.obrekht.nmedia.R
 import com.obrekht.nmedia.databinding.ItemPostBinding
-import com.obrekht.nmedia.posts.repository.model.Post
+import com.obrekht.nmedia.posts.model.Post
 import com.obrekht.nmedia.utils.StringUtils
 
 class PostsAdapter(
@@ -39,6 +41,10 @@ class PostsAdapter(
                 published.text = post.published
                 content.text = post.content
 
+                videoThumbnail.setImageResource(R.drawable.sample_thumbnail)
+                videoTitle.text = "Шоурил студентов курса «Моушн-дизайнер в 2D и 3D»"
+                video.isVisible = post.video.isNotBlank()
+
                 like.isChecked = post.likedByMe
                 like.text = StringUtils.getCompactNumber(post.likes)
                 share.text = StringUtils.getCompactNumber(post.shares)
@@ -60,6 +66,13 @@ class PostsAdapter(
                 val post = getItem(holder.bindingAdapterPosition)
                 interactionListener.onShare(post)
             }
+
+            val onVideoClick = View.OnClickListener {
+                val post = getItem(holder.bindingAdapterPosition)
+                interactionListener.onVideoClick(post)
+            }
+            videoThumbnail.setOnClickListener(onVideoClick)
+            videoTitle.setOnClickListener(onVideoClick)
 
             val popupMenu = PopupMenu(menu.context, menu).apply {
                 inflate(R.menu.options_post)

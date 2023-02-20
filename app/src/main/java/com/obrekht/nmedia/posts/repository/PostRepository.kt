@@ -1,7 +1,7 @@
 package com.obrekht.nmedia.posts.repository
 
 import androidx.lifecycle.LiveData
-import com.obrekht.nmedia.posts.repository.model.Post
+import com.obrekht.nmedia.posts.model.Post
 
 interface PostRepository {
     fun getAll(): LiveData<List<Post>>

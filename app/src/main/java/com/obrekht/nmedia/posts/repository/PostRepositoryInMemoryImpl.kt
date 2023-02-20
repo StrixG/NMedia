@@ -2,11 +2,26 @@ package com.obrekht.nmedia.posts.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.obrekht.nmedia.posts.repository.model.Post
+import com.obrekht.nmedia.posts.model.Post
 import kotlin.random.Random
 
 class PostRepositoryInMemoryImpl : PostRepository {
     private var postList = listOf(
+        Post(
+            id = 10,
+            author = "Нетология. Университет интернет-профессий будущего",
+            content = "Анимация помогает рассказывать истории, привлекать и удерживать внимание аудитории, в ёмкой форме доносить ценности брендов.\n" +
+                    "\n" +
+                    "Студенты курса «Моушн-дизайнер в 2D и 3D» решают все эти задачи с помощью анимированной графики. Под руководством экспертов они освоили инструменты Adobe After Efects, Adobe Premiere Pro и Cinema 4D, научились передавать смыслы через композицию, типографику, цвет.\n" +
+                    "\n" +
+                    "Собрали работы студентов в шоурил — и пусть он станет для вас вдохновением!",
+            published = "16 февраля в 8:39",
+            likedByMe = false,
+            likes = Random.nextInt(0, 10000),
+            shares = Random.nextInt(0, 10000),
+            views = Random.nextInt(0, 50000),
+            video = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ),
         Post(
             id = 9,
             author = "Нетология. Университет интернет-профессий будущего",
@@ -99,7 +114,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
         )
     )
 
-    private var nextId = 10L
+    private var nextId = 11L
 
     val data = MutableLiveData(postList)
 

@@ -6,4 +6,6 @@
     <dimen name="icon_button_min_size">24dp</dimen>
     <dimen name="button_spacing">8dp</dimen>
     <dimen name="views_icon_size">20dp</dimen>
+    <dimen name="post_media_margin">8dp</dimen>
+    <dimen name="play_button_size">48dp</dimen>
 </resources>

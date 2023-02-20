@@ -2,9 +2,9 @@ package com.obrekht.nmedia.posts
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.obrekht.nmedia.posts.model.Post
 import com.obrekht.nmedia.posts.repository.PostRepository
 import com.obrekht.nmedia.posts.repository.PostRepositoryInMemoryImpl
-import com.obrekht.nmedia.posts.repository.model.Post
 
 private val emptyPost = Post(
     id = 0,
