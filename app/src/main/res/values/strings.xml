@@ -17,4 +17,5 @@
     <string name="add_post_description">Add post</string>
     <string name="video_thumbnail">Video thumbnail</string>
     <string name="play_button">Play button</string>
+    <string name="no_posts">There are no posts yet :(</string>
 </resources>

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.obrekht.nmedia.R
 import com.obrekht.nmedia.databinding.ActivityMainBinding
 import com.obrekht.nmedia.posts.model.Post
@@ -74,6 +75,9 @@ class MainActivity : AppCompatActivity() {
                     binding.postList.smoothScrollToPosition(0)
                 }
             }
+
+            binding.emptyText.isVisible = posts.isEmpty()
+            binding.postList.isVisible = posts.isNotEmpty()
         }
 
         binding.buttonAddPost.setOnClickListener {
