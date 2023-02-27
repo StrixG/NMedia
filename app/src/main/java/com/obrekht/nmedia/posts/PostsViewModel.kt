@@ -1,10 +1,11 @@
 package com.obrekht.nmedia.posts
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.obrekht.nmedia.posts.model.Post
 import com.obrekht.nmedia.posts.repository.PostRepository
-import com.obrekht.nmedia.posts.repository.PostRepositoryInMemoryImpl
+import com.obrekht.nmedia.posts.repository.PostRepositoryFileImpl
 
 private val emptyPost = Post(
     id = 0,
@@ -13,8 +14,8 @@ private val emptyPost = Post(
     published = ""
 )
 
-class PostsViewModel : ViewModel() {
-    private val repository: PostRepository = PostRepositoryInMemoryImpl()
+class PostsViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: PostRepository = PostRepositoryFileImpl(application)
     val data = repository.getAll()
     val edited = MutableLiveData(emptyPost)
 

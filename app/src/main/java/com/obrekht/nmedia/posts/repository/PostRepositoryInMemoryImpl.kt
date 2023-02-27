@@ -113,10 +113,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             views = Random.nextInt(0, 50000)
         )
     )
-
     private var nextId = 11L
-
-    val data = MutableLiveData(postList)
+    private val data = MutableLiveData(postList)
 
     override fun getAll(): LiveData<List<Post>> = data
 
