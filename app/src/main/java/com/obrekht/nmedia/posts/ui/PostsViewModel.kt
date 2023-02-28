@@ -1,4 +1,4 @@
-package com.obrekht.nmedia.posts
+package com.obrekht.nmedia.posts.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
