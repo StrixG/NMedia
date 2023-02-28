@@ -23,6 +23,5 @@
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="feed_title">Feed</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="post">Post</string>
 </resources>
