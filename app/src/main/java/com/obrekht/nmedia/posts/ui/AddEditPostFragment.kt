@@ -20,6 +20,8 @@ class AddEditPostFragment : Fragment(R.layout.fragment_add_edit_post) {
     private val viewModel: PostsViewModel by activityViewModels()
     private val args: AddEditPostFragmentArgs by navArgs()
 
+    private var initialText: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,6 +42,7 @@ class AddEditPostFragment : Fragment(R.layout.fragment_add_edit_post) {
                 findNavController().navigateUp()
             }
 
+            initialText = args.text
             inputField.setText(args.text)
             inputField.focusAndShowKeyboard()
         }
@@ -56,7 +59,8 @@ class AddEditPostFragment : Fragment(R.layout.fragment_add_edit_post) {
     }
 
     private fun tryQuit(shouldNavigateUp: Boolean = false) {
-        if (binding.inputField.text.isNotBlank()) {
+        val text = binding.inputField.text.toString()
+        if (text.isNotBlank() && text != initialText) {
             showExitConfirmation(shouldNavigateUp)
         } else {
             cancelEditAndExit(shouldNavigateUp)
