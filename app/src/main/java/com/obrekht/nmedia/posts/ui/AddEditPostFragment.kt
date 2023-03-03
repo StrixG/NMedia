@@ -26,14 +26,14 @@ class AddEditPostFragment : Fragment(R.layout.fragment_add_edit_post) {
         super.onCreate(savedInstanceState)
 
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-            tryQuit()
+            tryExit()
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             toolbar.setNavigationOnClickListener {
-                tryQuit(true)
+                tryExit(true)
             }
 
             buttonSave.setOnClickListener {
@@ -58,7 +58,7 @@ class AddEditPostFragment : Fragment(R.layout.fragment_add_edit_post) {
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
     }
 
-    private fun tryQuit(shouldNavigateUp: Boolean = false) {
+    private fun tryExit(shouldNavigateUp: Boolean = false) {
         val text = binding.inputField.text.toString()
         if (text.isNotBlank() && text != initialText) {
             showExitConfirmation(shouldNavigateUp)
