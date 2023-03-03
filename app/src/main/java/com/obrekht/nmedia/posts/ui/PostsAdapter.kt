@@ -1,4 +1,4 @@
-package com.obrekht.nmedia.posts
+package com.obrekht.nmedia.posts.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ import com.obrekht.nmedia.posts.model.Post
 import com.obrekht.nmedia.utils.StringUtils
 
 class PostsAdapter(
-    var interactionListener: PostInteractionListener
+    private val interactionListener: PostInteractionListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(
     AsyncDifferConfig.Builder(DiffCallback()).build()
 ) {
@@ -31,9 +31,55 @@ class PostsAdapter(
     }
 
     class ViewHolder(
-        private val binding: ItemPostBinding
+        private val binding: ItemPostBinding,
+        private val interactionListener: PostInteractionListener
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        private var post: Post? = null
+        private val popupMenu = PopupMenu(binding.menu.context, binding.menu).apply {
+            inflate(R.menu.options_post)
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.edit -> {
+                        post?.let(interactionListener::onEdit)
+                        true
+                    }
+                    R.id.remove -> {
+                        post?.let(interactionListener::onRemove)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+
+        init {
+            with(binding) {
+                card.setOnClickListener {
+                    post?.let(interactionListener::onClick)
+                }
+                like.setOnClickListener {
+                    post?.let(interactionListener::onLike)
+                }
+                share.setOnClickListener {
+                    post?.let(interactionListener::onShare)
+                }
+
+                val onVideoClick = View.OnClickListener {
+                    post?.let(interactionListener::onVideoClick)
+                }
+                videoThumbnail.setOnClickListener(onVideoClick)
+                videoTitle.setOnClickListener(onVideoClick)
+
+                menu.setOnClickListener {
+                    popupMenu.show()
+                }
+            }
+        }
+
         fun bind(post: Post) {
+            this.post = post
+
             binding.apply {
                 avatar.setImageResource(R.drawable.ic_launcher_foreground)
 
@@ -41,6 +87,7 @@ class PostsAdapter(
                 published.text = post.published
                 content.text = post.content
 
+                // TODO: Get video data from the post
                 videoThumbnail.setImageResource(R.drawable.sample_thumbnail)
                 videoTitle.text = "Шоурил студентов курса «Моушн-дизайнер в 2D и 3D»"
                 video.isVisible = post.video.isNotBlank()
@@ -55,46 +102,7 @@ class PostsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val holder = ViewHolder(binding)
-
-        binding.apply {
-            like.setOnClickListener {
-                val post = getItem(holder.bindingAdapterPosition)
-                interactionListener.onLike(post)
-            }
-            share.setOnClickListener {
-                val post = getItem(holder.bindingAdapterPosition)
-                interactionListener.onShare(post)
-            }
-
-            val onVideoClick = View.OnClickListener {
-                val post = getItem(holder.bindingAdapterPosition)
-                interactionListener.onVideoClick(post)
-            }
-            videoThumbnail.setOnClickListener(onVideoClick)
-            videoTitle.setOnClickListener(onVideoClick)
-
-            val popupMenu = PopupMenu(menu.context, menu).apply {
-                inflate(R.menu.options_post)
-                setOnMenuItemClickListener { item ->
-                    val post = getItem(holder.bindingAdapterPosition)
-                    when (item.itemId) {
-                        R.id.edit -> {
-                            interactionListener.onEdit(post)
-                            true
-                        }
-                        R.id.remove -> {
-                            interactionListener.onRemove(post)
-                            true
-                        }
-                        else -> false
-                    }
-                }
-            }
-            menu.setOnClickListener {
-                popupMenu.show()
-            }
-        }
+        val holder = ViewHolder(binding, interactionListener)
 
         return holder
     }

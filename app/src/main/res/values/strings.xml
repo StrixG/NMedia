@@ -18,4 +18,10 @@
     <string name="video_thumbnail">Video thumbnail</string>
     <string name="play_button">Play button</string>
     <string name="no_posts">There are no posts yet :(</string>
+    <string name="cancel_edit_post_title">Confirmation</string>
+    <string name="cancel_edit_post_message">Are you sure? All changes will be lost.</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="feed_title">Feed</string>
+    <string name="post">Post</string>
 </resources>

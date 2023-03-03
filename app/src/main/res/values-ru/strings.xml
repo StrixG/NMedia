@@ -18,4 +18,10 @@
     <string name="video_thumbnail">Обложка видео</string>
     <string name="play_button">Кнопка воспроизведения</string>
     <string name="no_posts">Пока что здесь нет записей :(</string>
+    <string name="cancel_edit_post_title">Подтверждение</string>
+    <string name="cancel_edit_post_message">Вы уверены? Все изменения будут потеряны.</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete">Удалить</string>
+    <string name="feed_title">Лента</string>
+    <string name="post">Пост</string>
 </resources>
