@@ -40,18 +40,17 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:${libs.versions.jetpack.core}")
-    implementation("androidx.appcompat:appcompat:${libs.versions.appcompat}")
-    implementation("com.google.android.material:material:${libs.versions.material}")
-    implementation("androidx.activity:activity-ktx:${libs.versions.activity}")
-    implementation("androidx.fragment:fragment-ktx:${libs.versions.fragment}")
-    implementation("androidx.constraintlayout:constraintlayout:${libs.versions.constraintlayout}")
-    implementation("androidx.recyclerview:recyclerview:${libs.versions.recyclerview}")
-    implementation("androidx.navigation:navigation-fragment-ktx:${libs.versions.navigation}")
-    implementation("androidx.navigation:navigation-ui-ktx:${libs.versions.navigation}")
-    implementation("com.google.code.gson:gson:${libs.versions.gson}")
+    implementation(libs.jetpack.core)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
+    implementation(libs.fragment)
+    implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
+    implementation(libs.bundles.navigation)
+    implementation(libs.gson)
 
-    testImplementation("junit:junit:${libs.versions.junit}")
-    androidTestImplementation("androidx.test.ext:junit:${libs.versions.junit.ext}")
-    androidTestImplementation("androidx.test.espresso:espresso-core:${libs.versions.espresso}")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.espresso)
 }

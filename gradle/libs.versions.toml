@@ -13,3 +13,24 @@ gson = "2.10.1"
 junit = "4.13.2"
 junit-ext = "1.1.5"
 espresso = "3.5.1"
+
+[libraries]
+jetpack-core = { module = "androidx.core:core-ktx", version.ref = "jetpack-core" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+activity = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
+fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+junit = { module = "junit:junit", version.ref = "junit" }
+junit-ext = { module = "androidx.test.ext:junit", version.ref = "junit-ext" }
+espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+
+[bundles]
+navigation = ["navigation.fragment", "navigation.ui"]
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
