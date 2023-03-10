@@ -1,4 +1,4 @@
-package com.obrekht.nmedia.posts.repository
+package com.obrekht.nmedia.posts.data
 
 import android.content.Context
 import androidx.lifecycle.LiveData
