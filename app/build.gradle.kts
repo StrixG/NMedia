@@ -40,31 +40,18 @@ android {
 }
 
 dependencies {
-    val core_version = "1.9.0"
-    val appcompat_version = "1.6.1"
-    val mdc_version = "1.8.0"
-    val constraintlayout_version = "2.1.4"
-    val recyclerview_version = "1.2.1"
-    val junit_version = "4.13.2"
-    val ext_junit_version = "1.1.5"
-    val espresso_core_version = "3.5.1"
-    val activity_version = "1.6.1"
-    val fragment_version = "1.5.5"
-    val nav_version = "2.5.3"
-    val gson_version = "2.10.1"
+    implementation("androidx.core:core-ktx:${libs.versions.jetpack.core}")
+    implementation("androidx.appcompat:appcompat:${libs.versions.appcompat}")
+    implementation("com.google.android.material:material:${libs.versions.material}")
+    implementation("androidx.activity:activity-ktx:${libs.versions.activity}")
+    implementation("androidx.fragment:fragment-ktx:${libs.versions.fragment}")
+    implementation("androidx.constraintlayout:constraintlayout:${libs.versions.constraintlayout}")
+    implementation("androidx.recyclerview:recyclerview:${libs.versions.recyclerview}")
+    implementation("androidx.navigation:navigation-fragment-ktx:${libs.versions.navigation}")
+    implementation("androidx.navigation:navigation-ui-ktx:${libs.versions.navigation}")
+    implementation("com.google.code.gson:gson:${libs.versions.gson}")
 
-    implementation("androidx.core:core-ktx:$core_version")
-    implementation("androidx.appcompat:appcompat:$appcompat_version")
-    implementation("com.google.android.material:material:$mdc_version")
-    implementation("androidx.activity:activity-ktx:$activity_version")
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation("androidx.constraintlayout:constraintlayout:$constraintlayout_version")
-    implementation("androidx.recyclerview:recyclerview:$recyclerview_version")
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-    implementation("com.google.code.gson:gson:$gson_version")
-
-    testImplementation("junit:junit:$junit_version")
-    androidTestImplementation("androidx.test.ext:junit:$ext_junit_version")
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espresso_core_version")
+    testImplementation("junit:junit:${libs.versions.junit}")
+    androidTestImplementation("androidx.test.ext:junit:${libs.versions.junit.ext}")
+    androidTestImplementation("androidx.test.espresso:espresso-core:${libs.versions.espresso}")
 }
