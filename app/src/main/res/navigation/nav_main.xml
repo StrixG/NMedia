@@ -31,6 +31,10 @@
         android:label="fragment_add_edit_post"
         tools:layout="@layout/fragment_add_edit_post">
         <argument
+            android:name="postId"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <argument
             android:name="text"
             android:defaultValue=""
             app:argType="string" />

@@ -41,11 +41,16 @@ class AddEditPostFragment : Fragment(R.layout.fragment_add_edit_post) {
                 viewModel.save(text)
                 findNavController().navigateUp()
             }
-
-            initialText = args.text
-            inputField.setText(args.text)
-            inputField.focusAndShowKeyboard()
         }
+
+        val post = viewModel.edited.value
+
+        initialText = args.text.ifEmpty {
+            post?.content ?: ""
+        }
+
+        binding.inputField.setText(initialText)
+        binding.inputField.focusAndShowKeyboard()
     }
 
     override fun onStart() {
