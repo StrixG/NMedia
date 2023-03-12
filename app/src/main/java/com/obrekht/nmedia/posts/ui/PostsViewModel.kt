@@ -3,9 +3,10 @@ package com.obrekht.nmedia.posts.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.obrekht.nmedia.posts.data.AppDb
+import com.obrekht.nmedia.posts.data.PostRepository
+import com.obrekht.nmedia.posts.data.PostRepositorySQLiteImpl
 import com.obrekht.nmedia.posts.model.Post
-import com.obrekht.nmedia.posts.repository.PostRepository
-import com.obrekht.nmedia.posts.repository.PostRepositoryFileImpl
 
 private val emptyPost = Post(
     id = 0,
@@ -15,7 +16,9 @@ private val emptyPost = Post(
 )
 
 class PostsViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: PostRepository = PostRepositoryFileImpl(application)
+    private val repository: PostRepository = PostRepositorySQLiteImpl(
+        AppDb.getInstance(application).postDao
+    )
     val data = repository.getAll()
     val edited = MutableLiveData(emptyPost)
 
